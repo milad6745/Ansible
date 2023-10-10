@@ -33,7 +33,10 @@ lxc-ls -l
 lxc-attach web1
 
 #create user on web1 machine
+/etc/init.d/networking restart
 passwd ubuntu
+apt update
+apt install openssh-server nano python2.7 python3
 
 #install python and ssh on my agent
 apt install ssh pyrhon2.7
