@@ -20,3 +20,24 @@ ansible all -m ping
 web1 | SUCCESS => {
 web2 | SUCCESS => {
 ```
+## نشان دادن در یک خط
+```
+ansible '*' -o -m ping
+web2 | SUCCESS => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"},"changed": false,"ping": "pong"}
+web1 | SUCCESS => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"},"changed": false,"ping": "pong"}
+```
+
+# example
+```
+hosts
+[ubuntu]
+web1
+web2
+
+[centos]
+web3
+web4
+
+ansible ubuntu -m ping
+ansible centos -m ping
+```
