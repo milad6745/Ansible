@@ -27,3 +27,4 @@
         dest: /home
 ```
 
+ansible-playbook x.yaml
