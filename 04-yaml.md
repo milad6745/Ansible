@@ -37,3 +37,19 @@
 ```
 
 ansible-playbook x.yaml
+
+
+# gather_facts = false
+استفاده از این گزینه می‌تواند در مواردی مفید باشد که نیاز به جمع‌آوری اطلاعات جزئیات میزبان‌ها نداشته باشید و تنها به اجرای تسک‌ها و وظایف خاصی بر روی آن‌ها بپردازید. این گزینه زمان اجرای anisble را کاهش میدهد .
+---
+-
+  hosts: web1
+  user: root
+  gather_fact: false
+
+  tasks:
+    - name: copy file
+      copy:
+        src: test4
+        dest: /home
+```
