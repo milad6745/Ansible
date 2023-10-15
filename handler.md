@@ -1,0 +1,40 @@
+# msg handler
+```
+---
+- name: Copy file on Ubuntu
+  hosts: ubuntu
+  user: root
+  vars:
+    dest: "/home/welcome"
+    src: "test10"
+
+  tasks:
+    - name: copy file
+      copy:
+        src: "{{ src }}"
+        dest: "{{ dest }}"
+      notify:
+        - display result
+
+  handlers:
+    - name: display result
+      debug:
+        msg: "File was not found"
+```
+این یک پلی‌بوک Ansible است که یک فایل با نام `test10` را در مسیر `/home/welcome` در میزبان `ubuntu` کپی می‌کند.
+
+در این پلی‌بوک:
+
+- `name: Copy file on Ubuntu`: نام پلی‌بوک.
+- `hosts: ubuntu`: میزبان مورد نظر که این پلی‌بوک روی آن اجرا می‌شود.
+- `user: root`: کاربری که برای اجرای وظایف مورد استفاده می‌شود.
+- `vars`: تعریف متغیرها. در اینجا دو متغیر تعریف شده‌اند: `dest` که مسیر مقصد فایل کپی شده و `src` که مسیر فایل منبع است.
+- `tasks`: وظایفی که این پلی‌بوک اجرا می‌کند.
+  - `name: copy file`: توضیح مربوط به وظیفه.
+  - `copy`: ماژول کپی که برای انتقال فایل به کار می‌رود.
+  - `notify`: فراخوانی هندلری به نام `display result` بعد از اتمام این وظیفه.
+- `handlers`: هندلرها که در صورت فراخوانی از طریق `notify` اجرا می‌شوند.
+  - `name: display result`: توضیح مربوط به هندلر.
+  - `debug`: ماژول Debug که پیام "File was not found" را نمایش می‌دهد.
+
+در کل، این پلی‌بوک یک فایل با نام `test10` را در مسیر `/home/welcome` در میزبان `ubuntu` کپی می‌کند و سپس هندلر `display result` را فراخوانی می‌کند که یک پیام اطلاعاتی نمایش می‌دهد.
