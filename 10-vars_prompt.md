@@ -1,4 +1,5 @@
-# vars_prompt
+# vars
+## vars_prompt
 
 این گزینه برای گرفتن خروجی از کاربر است .
 گزینه private برای این است که اسم زده شده نشان داده شود یا خیر مثلا برای پسورد private را بله میکنیم
@@ -29,4 +30,34 @@ TASK [user info] ***************************************************************
 ok: [localhost] => {
     "msg": "hello milad"
 }
+```
+
+## list var
+در اینجا variable امان را بصورت لیست قرار دادیم
+```
+---
+- name: Playbook with vars_prompt
+  hosts: localhost
+
+  vars:
+    users:
+      [milad,roham]
+  tasks:
+    - name: user info
+      debug:
+        msg : "hello {{users.0}}"
+
+```
+
+## var example
+در اینجا ansible_user کاذبذی است که در انسیبل فرمان ها را اجرا میکند
+```
+---
+- name: Playbook with vars_prompt
+  hosts: localhost
+
+  tasks:
+    - name: user info
+      debug:
+        msg : "hello {{ansible_user}}"
 ```
