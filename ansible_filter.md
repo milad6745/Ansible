@@ -26,9 +26,12 @@ web1 | SUCCESS => {
 
 # ip address filter
 حال ما دنبال آیپی آدرس ها میکردیم
+ansible all -m setup
 
 ![image](https://github.com/milad6745/Ansible/assets/113288076/3ecd67e3-70fc-47c9-8db6-0bcf8ed856bc)
+
 حالا با استفاده از فایل yaml میایم و آیپی ها را درمیاوریم
+
 ```
 ---
 - name: Example of hostvars
