@@ -34,3 +34,7 @@ ansible all -m setup | grep dist
         msg: "File was not found"
 
 ```
+همانگ
+ونه که مشاهده میشود بر روی هاست های ubuntu این فایل skip میشود
+skipping: [web1]
+skipping: [web2]
