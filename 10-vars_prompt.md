@@ -21,3 +21,12 @@
       debug:
         msg: "Hello, {{ user_name }}. You are {{ user_age }} years old."
 ```
+
+```
+ansible-playbook test.yaml
+enter username: milad
+TASK [user info] ****************************************************************************
+ok: [localhost] => {
+    "msg": "hello milad"
+}
+```
