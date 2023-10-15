@@ -1,6 +1,9 @@
 # vars_prompt
+
 این گزینه برای گرفتن خروجی از کاربر است .
 گزینه private برای این است که اسم زده شده نشان داده شود یا خیر مثلا برای پسورد private را بله میکنیم
+
+```
 ---
 - name: Playbook with vars_prompt
   hosts: localhost
