@@ -38,3 +38,31 @@ ansible all -m setup | grep dist
 ونه که مشاهده میشود بر روی هاست های ubuntu این فایل skip میشود
 skipping: [web1]
 skipping: [web2]
+
+
+## Example if and elif
+```
+---
+- name: Example Playbook with if-elif-else
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Check hostname
+      debug:
+        msg: 
+          - "The hostname is web1"
+        when: ansible_hostname == 'web1'
+
+    - name: Check hostname
+      debug:
+        msg: 
+          - "The hostname is web2"
+        when: ansible_hostname == 'web2'
+
+    - name: Check hostname
+      debug:
+        msg: 
+          - "The hostname is neither web1 nor web2"
+        when: ansible_hostname != 'web1' and ansible_hostname != 'web2'
+```
