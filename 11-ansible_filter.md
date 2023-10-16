@@ -54,3 +54,26 @@ ok: [myubuntu] => {
     "msg": "IP address of ubuntu server is 192.168.72.18"
 }
 ```
+
+## Example
+```
+مثالی برای دیدن تاریخ در ماشین ها
+---
+- name: Example of hostvars
+  hosts: ubuntu
+  tasks:
+    - name: Display IP of web1
+      debug:
+        msg: "{{ ansible_date_time.date }}"
+```
+```
+TASK [Display IP of web1] *************************************************************
+ok: [web1] => {
+    "msg": "2023-10-16"
+}
+ok: [myubuntu] => {
+    "msg": "2023-10-16"
+}
+ok: [web2] => {
+    "msg": "2023-10-16"
+```
