@@ -1,6 +1,7 @@
 # install package with ansible
 
 میخواهیم در صورتی که distro ما centos باشد پکیج epel-release بر روی سرور مان نصب شود بنابر این فایل yaml زیر را مینویسیم .
+
 ```
 ---
 - name: Example Playbook with if-elif-else
