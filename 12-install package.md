@@ -16,3 +16,23 @@
         state: latest
       when: ansible_distribution == 'centos'
 ```
+
+میخواهیم در صورتی که distro اوبنتو بود بیاد و ابتدا کش رو آپدیت کنه و سئس سرویس nginx را نصب کند.
+```
+---
+- name: Install Nginx on Ubuntu
+  hosts: ubuntu
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+```
