@@ -55,5 +55,5 @@
 با استفاده از ماژول `debug`، متغیر `ansible_distribution` را نمایش می‌دهد.
 
 
-این Playbook یک متغیر به نام `our_fact` با مقدار "Ansible rock!" ایجاد می‌کند و همچنین مقدار `ansible_distribution` را به شکل بزرگوار تنظیم می‌کند. در نهایت، مقدار `ansible_distribution` (که حالا با حروف بزرگ نمایش داده می‌شود) را با استفاده از ماژول `debug` نمایش می‌دهد.
+این Playbook یک متغیر به نام `our_fact` با مقدار "Ansible rock!" ایجاد می‌کند و همچنین مقدار `ansible_distribution` را به شکل بزرگ تنظیم می‌کند. در نهایت، مقدار `ansible_distribution` (که حالا با حروف بزرگ نمایش داده می‌شود) را با استفاده از ماژول `debug` نمایش می‌دهد.
 
