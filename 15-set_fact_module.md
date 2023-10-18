@@ -1,5 +1,6 @@
 # set fact module
 
+ست کردن قانونی که بعدن میخایم ازش استفاده کنیم.
 ```
 ---
 - name: Install Nginx on Ubuntu
