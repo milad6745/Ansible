@@ -24,21 +24,35 @@
 
 **هاست‌ها و تنظیمات Playbook**:
 
-`hosts: ubuntu, centos`: این Playbook بر روی هاست‌هایی با نام ubuntu و centos اجرا می‌شود. این نام‌ها باید در فایل hosts شما تعریف شده باشند.
+`hosts: ubuntu, centos`: 
 
-`become: yes`: این مشخص می‌کند که باید با دسترسی مدیر (sudo) اجرا شود.
+این Playbook بر روی هاست‌هایی با نام ubuntu و centos اجرا می‌شود. این نام‌ها باید در فایل hosts شما تعریف شده باشند.
 
-`gather_facts: yes`: این فرمان اطلاعات مفیدی در مورد هاست‌ها را جمع‌آوری می‌کند تا در Playbook قابل دسترسی باشد.
+`become: yes`: 
+
+این مشخص می‌کند که باید با دسترسی مدیر (sudo) اجرا شود.
+
+`gather_facts: yes`:
+
+این فرمان اطلاعات مفیدی در مورد هاست‌ها را جمع‌آوری می‌کند تا در Playbook قابل دسترسی باشد.
 
 **مراحل (Tasks)**:
 
-`set Fact`: این مرحله از ماژول `set_fact` استفاده می‌کند تا متغیرهای فرضی به نام `our_fact` و `ansible_distribution` را تنظیم کند.
+`set Fact`:
 
-`our_fact: Ansible rock!`: مقدار متغیر `our_fact` به "Ansible rock!" تنظیم می‌شود.
+این مرحله از ماژول `set_fact` استفاده می‌کند تا متغیرهای فرضی به نام `our_fact` و `ansible_distribution` را تنظیم کند.
 
-`ansible_distribution: "{{ ansible_distribution | upper }}"`: متغیر `ansible_distribution` از توزیع فعلی Ansible با استفاده از فیلتر `upper` (برای تبدیل به حروف بزرگ) تنظیم می‌شود.
+`our_fact: Ansible rock!`: 
 
-`show fact`: با استفاده از ماژول `debug`، متغیر `ansible_distribution` را نمایش می‌دهد.
+مقدار متغیر `our_fact` به "Ansible rock!" تنظیم می‌شود.
+
+`ansible_distribution: "{{ ansible_distribution | upper }}"`: 
+
+متغیر `ansible_distribution` از توزیع فعلی Ansible با استفاده از فیلتر `upper` (برای تبدیل به حروف بزرگ) تنظیم می‌شود.
+
+`show fact`:
+
+با استفاده از ماژول `debug`، متغیر `ansible_distribution` را نمایش می‌دهد.
 
 
 این Playbook یک متغیر به نام `our_fact` با مقدار "Ansible rock!" ایجاد می‌کند و همچنین مقدار `ansible_distribution` را به شکل بزرگوار تنظیم می‌کند. در نهایت، مقدار `ansible_distribution` (که حالا با حروف بزرگ نمایش داده می‌شود) را با استفاده از ماژول `debug` نمایش می‌دهد.
