@@ -19,6 +19,7 @@
 ```
 
 
+
 این یک فایل YAML به عنوان یک playbook Ansible است که دو مرحله (task) دارد:
 
 **نام Playbook**:`Install Nginx on Ubuntu`: این Playbook به نصب Nginx بر روی هاست‌هایی با سیستم عامل‌های Ubuntu و CentOS می‌پردازد.
