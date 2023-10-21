@@ -59,3 +59,44 @@
 
 این Playbook یک متغیر به نام `our_fact` با مقدار "Ansible rock!" ایجاد می‌کند و همچنین مقدار `ansible_distribution` را به شکل بزرگ تنظیم می‌کند. در نهایت، مقدار `ansible_distribution` (که حالا با حروف بزرگ نمایش داده می‌شود) را با استفاده از ماژول `debug` نمایش می‌دهد.
 
+## Example
+```
+---
+- name: Example Playbook with if-elif-else
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: ubuntu_infi
+      set_fact:
+        web_port: 8080
+        web_path: /usr/local/nginx
+        web_service: nginx
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Centos_infi
+      set_fact:
+        web_port: 8080
+        web_path: /etc/apache2
+        web_service: apache
+      when: ansible_distribution == 'CentOS'
+
+    - name: view informatio
+      debug:
+        msg: "web_port:{{ web_port }}  web_path:{{ web_path}}  web_service:{{ web_service }}"
+```
+```
+TASK [view informatio] ***********************************************************
+ok: [web2] => {
+    "msg": "web_port:8080  web_path:/usr/local/nginx  web_service:nginx"
+}
+ok: [web1] => {
+    "msg": "web_port:8080  web_path:/usr/local/nginx  web_service:nginx"
+}
+ok: [myubuntu] => {
+    "msg": "web_port:8080  web_path:/usr/local/nginx  web_service:nginx"
+}
+ok: [web4] => {
+    "msg": "web_port:8080  web_path:/etc/apache2  web_service:apache"
+}
+```
