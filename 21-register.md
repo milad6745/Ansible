@@ -1,7 +1,7 @@
 # register
 
 در Ansible، register یک کلمه کلیدی استفاده می‌شود تا نتیجه یک کار را در یک متغیر ذخیره کند. این به شما اجازه می‌دهد تا بتوانید نتیجه عملیات را در مراحل بعدی اجرا استفاده کنید.
-
+```
 ---
 - name: Run Docker container and wait for website to be available
   hosts: web4
