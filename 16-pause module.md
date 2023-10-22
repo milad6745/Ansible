@@ -14,8 +14,8 @@
         seconds: 10
 
 ```
-## example
-در این مثال از ما میخواهد برای ادامه اجرا شدن playbook کلید اینتر ر ا بزنیم :
+## example prompt
+در این مثال از ما میخواهد با استفاده از prompt برای ادامه اجرا شدن playbook کلید اینتر ر ا بزنیم :
 ```
 ---
 - name: Example Playbook with if-elif-else
