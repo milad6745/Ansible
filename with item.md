@@ -6,8 +6,6 @@
 
 ویژگی `with_items` برای اجرای تسک بر روی تمامی موارد در لیست مشخص شده (در اینجا 'Ubuntu' و 'CentOS') استفاده می‌شود. اگر توزیع Ansible با هر یک از این موارد برابر باشد، تسک اجرا خواهد شد.
 
-در ویژگی `when`، بررسی می‌شود که آیا توزیع Ansible با هر مورد در لیست همخوانی دارد یا خیر. اگر همخوانی وجود داشته باشد، تسک اجرا می‌شود.
-
 مثلاً اگر میزبانی با توزیع "Ubuntu" یا "CentOS" داشته باشید، این پلی بوک فقط بر روی این میزبان‌ها اجرا می‌شود و فایل "test1" به مسیر "/home/test" کپی می‌شود.
 
 ```
@@ -17,8 +15,8 @@
   tasks:
     - name: copy file
       copy:
-        content: test1
-        dest: /home/test
+        content: welcome to my server
+        dest: /etc/motd
       with_items: [ 'Ubuntu' , 'CentOS']
       when: ansible_distribution == item
 
