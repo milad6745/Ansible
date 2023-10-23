@@ -38,3 +38,22 @@
       when: ansible_distribution == item
 
 ```
+
+
+# Example for create user
+
+با این play book میتوان با استفاده از with_item تعداد دلخواه لیست را کاربر ایجاد کرد .
+```
+---
+- name: Run Docker container and wait for website to be available
+  hosts: ubuntu, centos
+  tasks:
+    - name: copy file
+      user:
+        name: "{{ item }}"
+      with_items:
+        - milad
+        - roham
+        - mahyar
+
+```
