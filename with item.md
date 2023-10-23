@@ -21,3 +21,20 @@
       when: ansible_distribution == item
 
 ```
+ ## OR
+
+```
+---
+- name: Run Docker container and wait for website to be available
+  hosts: ubuntu, centos
+  tasks:
+    - name: copy file
+      copy:
+        content: welcome to my server
+        dest: /etc/motd
+      with_items:
+        - CentOS
+        - Ubuntu
+      when: ansible_distribution == item
+
+```
