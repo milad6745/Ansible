@@ -1,4 +1,3 @@
-با کمال میل، یک مثال از چگونگی استفاده از `ansible_tag` در یک Ansible playbook برای شما ارائه می‌دهم.
 
 فرض کنید که شما یک پروژه Ansible دارید که باید چندین وظیفه را اجرا کند و می‌خواهید تنها برخی از وظایف در هنگام اجرا فعلی اجرا شوند. برای این کار از `ansible_tag` استفاده می‌کنیم.
 
@@ -60,6 +59,9 @@ project/
 
 ```bash
 ansible-playbook playbook.yml --tags tag1
+```
+```bash
+ansible-playbook playbook.yml --tags tag2
 ```
 
 به این ترتیب، فقط وظیفه‌ای که دارای برچسب `tag1` است (در این حالت `task1.yml`) اجرا می‌شود.
