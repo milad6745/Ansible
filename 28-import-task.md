@@ -1,4 +1,5 @@
-با کمال میل، یک مثال از Ansible playbook که از # import tasks
+# import tasks
+با کمال میل، یک مثال از Ansible playbook که از
 
 `import_tasks` استفاده می‌کند برای شما ارائه می‌دهم.
 
