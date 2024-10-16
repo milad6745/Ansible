@@ -7,8 +7,8 @@ cat ansible.cfg
 inventory = hosts
 # برای غیر اجباری بودن اضافه کردن در هاست کی
 host_key_checking = false
-
- cat hosts
+----
+nano hosts
 [all]
 web1
 web2
