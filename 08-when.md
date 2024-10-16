@@ -66,3 +66,15 @@ skipping: [web2]
           - "The hostname is neither web1 nor web2"
         when: ansible_hostname != 'web1' and ansible_hostname != 'web2'
 ```
+
+```
+---
+- hosts: all
+  gather_facts: true  # Ansible به صورت خودکار اطلاعات سیستم میزبان را جمع‌آوری می‌کند
+
+  tasks:
+    - name: Show OS distribution
+      debug:
+        msg: "The OS distribution on {{ ansible_hostname }} is {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+```
