@@ -6,7 +6,7 @@ cat ansible.cfg
 [defaults]
 inventory = hosts
 # برای غیر اجباری بودن اضافه کردن در هاست کی
-host_key_cheking = false
+host_key_checking = false
 
  cat hosts
 [all]
