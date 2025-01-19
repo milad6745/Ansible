@@ -1,67 +1,63 @@
+در زیر یک Playbook ساده برای **راه‌اندازی مجدد Nginx** آورده شده است. این Playbook بررسی می‌کند که سرویس Nginx نصب شده و در حال اجرا باشد و سپس آن را ری‌استارت می‌کند.
 
-فرض کنید که شما یک پروژه Ansible دارید که باید چندین وظیفه را اجرا کند و می‌خواهید تنها برخی از وظایف در هنگام اجرا فعلی اجرا شوند. برای این کار از `ansible_tag` استفاده می‌کنیم.
+---
 
-ساختار پوشه‌ها و فایل‌ها:
-
-```
-project/
-├── playbook.yml
-└── tasks/
-    ├── task1.yml
-    └── task2.yml
-```
-
-فایل `task1.yml`:
+### Playbook برای ری‌استارت Nginx:
 
 ```yaml
 ---
-- name: Task 1
-  debug:
-    msg: "This is task 1"
-  tags:
-    - tag1
-```
-
-فایل `task2.yml`:
-
-```yaml
----
-- name: Task 2
-  debug:
-    msg: "This is task 2"
-  tags:
-    - tag2
-```
-
-سپس فایل `playbook.yml`:
-
-```yaml
----
-- name: My Tagged Playbook
-  hosts: localhost
-  gather_facts: no
-
+- name: Restart Nginx Service
+  hosts: web_servers  # گروهی از سرورها که در فایل اینونتوری تعریف شده‌اند
+  become: yes         # اجرای دستورات با دسترسی ریشه
   tasks:
-    - name: Include Task 1 with tag1
-      include_tasks: tasks/task1.yml
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
       tags:
-        - tag1
+        - install
 
-    - name: Include Task 2 with tag2
-      include_tasks: tasks/task2.yml
+    - name: Restart Nginx service
+      service:
+        name: nginx
+        state: restarted
       tags:
-        - tag2
+        - restart
 ```
 
-در این مثال، ما یک پروژه ساده Ansible داریم که دو وظیفه را اجرا می‌کند. هر کدام از تسک‌ها با یک برچسب (tag) مشخص شده‌اند (`tag1` برای `task1.yml` و `tag2` برای `task2.yml`). 
+---
 
-حالا می‌توانیم فقط وظایفی که دارای برچسب مشخص هستند را اجرا کنیم. به عنوان مثال، اگر می‌خواهید تنها `task1.yml` اجرا شود، می‌توانید دستور زیر را اجرا کنید:
+### توضیحات:
+1. **hosts**:
+   - در اینجا `web_servers` به عنوان گروهی از سرورها در فایل `inventory` تعریف شده است.
+2. **become**:
+   - به Ansible اجازه می‌دهد دستورات را با دسترسی `sudo` اجرا کند.
+3. **tasks**:
+   - **Ensure Nginx is installed**:
+     - با استفاده از ماژول `apt`، بررسی می‌کند که Nginx نصب شده باشد.
+   - **Restart Nginx service**:
+     - سرویس Nginx را با استفاده از ماژول `service` ری‌استارت می‌کند.
 
-```bash
-ansible-playbook playbook.yml --tags tag1
-```
-```bash
-ansible-playbook playbook.yml --tags tag2
-```
+---
 
-به این ترتیب، فقط وظیفه‌ای که دارای برچسب `tag1` است (در این حالت `task1.yml`) اجرا می‌شود.
+### اجرای Playbook:
+1. فایل را ذخیره کنید، مثلاً با نام `restart_nginx.yml`.
+2. Playbook را اجرا کنید:
+   ```bash
+   ansible-playbook -i inventory restart_nginx.yml
+   ```
+
+---
+
+### اجرای فقط تسک‌های مشخص با استفاده از تگ‌ها:
+- فقط بررسی نصب Nginx:
+  ```bash
+  ansible-playbook -i inventory restart_nginx.yml --tags install
+  ```
+
+- فقط ری‌استارت Nginx:
+  ```bash
+  ansible-playbook -i inventory restart_nginx.yml --tags restart
+  ```
+
+---
